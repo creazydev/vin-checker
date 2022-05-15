@@ -1,0 +1,11 @@
+.social {
+  position: fixed;
+  top: 50px;
+  right: 40px;
+}
+
+.social i {
+  color: var(--primary-color);
+  font-size: xx-large;
+  margin: 0 10px;
+}

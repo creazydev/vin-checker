@@ -1,7 +1,3 @@
-:root {
-  --primary-color: #3342f7;
-}
-
 input:focus,
 select:focus,
 textarea:focus,
@@ -23,14 +19,6 @@ button:focus {
   text-align: center;
 }
 
-.logo {
-  padding: 15vh 0 2vh 0;
-}
-
-.logo img {
-  max-width: 500px;
-}
-
 .wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -40,7 +28,7 @@ button:focus {
   border-radius: 30px;
   margin: auto;
   width: 953px;
-  height: 552px;
+  min-height: 552px;
   padding: 100px 10px 10px 10px;
 }
 
@@ -79,14 +67,6 @@ button:focus {
   transform: translateY(65%);
 }
 
-.social i {
-  color: var(--primary-color);
-  font-size: xx-large;
-  margin: 0 10px;
-}
-
-.social {
-  position: fixed;
-  top: 50px;
-  right: 40px;
+a > * {
+  cursor: pointer;
 }
