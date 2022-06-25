@@ -1,20 +1,35 @@
 version: '3'
 
 services:
-  web:
-    build:
-      context: .
-      dockerfile: docker/nginx/Dockerfile
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/app/
-    links:
-      - php
+    web:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        container_name: vinchecker-web
+        ports:
+            - "8080:80"
+        volumes:
+            - .:/app/
+        links:
+            - php
 
-  php:
-    build:
-      context: .
-      dockerfile: docker/php/Dockerfile
-    volumes:
-      - .:/app/
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        container_name: vinchecker-php
+        volumes:
+            - .:/app/
+        links:
+            - postgres
+
+    postgres:
+        image: 'postgres:latest'
+        container_name: vinchecker-postgres
+        ports:
+            - "5435:5432"
+        environment:
+            - POSTGRES_USER=vinchecker
+            - POSTGRES_PASSWORD=aifae4UH>aiquie
+        volumes:
+            - /var/local/vinchecker:/var/lib/postgresql/data
