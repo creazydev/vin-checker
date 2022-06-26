@@ -18,18 +18,26 @@ services:
             context: .
             dockerfile: docker/php/Dockerfile
         container_name: vinchecker-php
+        environment:
+            - DATABASE_USERNAME=vinchecker
+            - DATABASE_PASSWORD=aifae4UH>aiquie
+            - DATABASE_HOST=db
+            - DATABASE_NAME=vinchecker
+            - DATABASE_PORT=5435
         volumes:
             - .:/app/
         links:
-            - postgres
+            - db
 
-    postgres:
+    db:
         image: 'postgres:latest'
-        container_name: vinchecker-postgres
+        container_name: vinchecker-db
         ports:
             - "5435:5432"
         environment:
             - POSTGRES_USER=vinchecker
             - POSTGRES_PASSWORD=aifae4UH>aiquie
+            - POSTGRES_DB=vinchecker
         volumes:
             - /var/local/vinchecker:/var/lib/postgresql/data
+        command: -p 5435

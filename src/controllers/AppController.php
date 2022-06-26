@@ -1,6 +1,15 @@
 <?php
 
+require_once __DIR__ . '/../persistence/TestRepository.php';
+
 class AppController {
+    private $projectRepository;
+
+    public function __construct()
+    {
+        $this->projectRepository = new TestRepository();
+        $this->projectRepository->test_connection();
+    }
 
     protected function render(string $template = null) {
         $templatePath = 'public/views/'.$template.'.php';
