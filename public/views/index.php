@@ -8,6 +8,9 @@
                 <div class="label">
                 <span>
                     VIN
+                    <?php
+                    print "env is: ".$_ENV["DATABASE_PORT"]."\n";
+                    ?>
                 </span>
                 </div>
                 <input type="text" class="input" />
