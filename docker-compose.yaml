@@ -7,7 +7,7 @@ services:
             dockerfile: docker/nginx/Dockerfile
         container_name: vinchecker-web
         ports:
-            - "8080:80"
+            - "8085:80"
         volumes:
             - .:/app/
         links:
@@ -18,26 +18,28 @@ services:
             context: .
             dockerfile: docker/php/Dockerfile
         container_name: vinchecker-php
+        extra_hosts:
+            - "host.docker.internal:172.17.0.1"
         environment:
-            - DATABASE_USERNAME=vinchecker
-            - DATABASE_PASSWORD=aifae4UH>aiquie
-            - DATABASE_HOST=db
-            - DATABASE_NAME=vinchecker
-            - DATABASE_PORT=5435
+            - DATABASE_USERNAME=rzbsjaisuefxqd
+            - DATABASE_PASSWORD=bef08b0d4a9c92a1e542760091b2213d63b27618f2ad8fb8a8d3ad0c5d10af7f
+            - DATABASE_HOST=ec2-3-248-121-12.eu-west-1.compute.amazonaws.com
+            - DATABASE_NAME=d41l7k947eqp2i
+            - DATABASE_PORT=5432
         volumes:
             - .:/app/
-        links:
-            - db
-
-    db:
-        image: 'postgres:latest'
-        container_name: vinchecker-db
-        ports:
-            - "5435:5432"
-        environment:
-            - POSTGRES_USER=vinchecker
-            - POSTGRES_PASSWORD=aifae4UH>aiquie
-            - POSTGRES_DB=vinchecker
-        volumes:
-            - /var/local/vinchecker:/var/lib/postgresql/data
-        command: -p 5435
+#        links:
+#            - db
+#
+#    db:
+#        image: 'postgres:latest'
+#        container_name: vinchecker-db
+#        ports:
+#            - "5435:5432"
+#        environment:
+#            - POSTGRES_USER=vinchecker
+#            - POSTGRES_PASSWORD=aifae4UH>aiquie
+#            - POSTGRES_DB=vinchecker
+#        volumes:
+#            - /var/local/vinchecker:/var/lib/postgresql/data
+#        command: -p 5435
