@@ -63,6 +63,12 @@ class AuthController extends AppController
 
     public function logout()
     {
+        $sessionById = $this->sessionRepository->findBySessionId($_COOKIE[Routing::$session_cookie_name]);
+
+        if (!is_null($sessionById)) {
+            $this->sessionRepository->delete($sessionById);
+        }
+
         unset($_COOKIE[Routing::$session_cookie_name]);
         setcookie(Routing::$session_cookie_name, null, -1, '/');
         header("Location: /login");

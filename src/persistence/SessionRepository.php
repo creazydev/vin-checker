@@ -51,4 +51,21 @@ class SessionRepository extends BaseRepository
             $session->getUserId()
         ]);
     }
+
+    public function delete(Session $session): void
+    {
+        $sql = '
+            DELETE FROM users_sessions
+            WHERE session_id=:sessionId;
+        ';
+
+        $query = $this
+            ->database
+            ->connect()
+            ->prepare($sql);
+
+        $query->execute([
+            $session->getId()
+        ]);
+    }
 }
