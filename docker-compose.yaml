@@ -21,10 +21,10 @@ services:
         extra_hosts:
             - "host.docker.internal:172.17.0.1"
         environment:
-            - DATABASE_USERNAME=rzbsjaisuefxqd
-            - DATABASE_PASSWORD=bef08b0d4a9c92a1e542760091b2213d63b27618f2ad8fb8a8d3ad0c5d10af7f
-            - DATABASE_HOST=ec2-3-248-121-12.eu-west-1.compute.amazonaws.com
-            - DATABASE_NAME=d41l7k947eqp2i
+            - DATABASE_USERNAME=psxfwnjevvsbfz
+            - DATABASE_PASSWORD=c170b2a290bc54e6e9e38c7b230c21fe9c50176874cd32c82215e123936fe3e5
+            - DATABASE_HOST=ec2-34-248-169-69.eu-west-1.compute.amazonaws.com
+            - DATABASE_NAME=df39d20beami88
             - DATABASE_PORT=5432
         volumes:
             - .:/app/

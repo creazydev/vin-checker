@@ -5,9 +5,9 @@
     <div class="wrapper">
         <form action="login" method="POST">
             <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email" value="John"><br>
+            <input type="text" id="email" name="email" value="John@gmail.com"><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" value="Doe"><br>
+            <input type="password" id="password" name="password" value="kamilkamil"><br>
             <div class="error">
                 <?php
                 if(isset($error)){
