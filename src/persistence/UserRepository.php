@@ -37,8 +37,8 @@ class UserRepository extends BaseRepository
     public function save(User $user): void
     {
         $sql = '
-            INSERT INTO app_users (user_id, email, password, role)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO app_users (email, password, role)
+            VALUES (?, ?, ?)
         ';
 
         $query = $this
@@ -47,7 +47,6 @@ class UserRepository extends BaseRepository
             ->prepare($sql);
 
         $query->execute([
-            $user->getId(),
             $user->getEmail(),
             $user->getPassword(),
             $user->getRole()

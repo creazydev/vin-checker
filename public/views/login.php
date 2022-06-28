@@ -7,7 +7,7 @@
             <label for="email">Email:</label><br>
             <input type="text" id="email" name="email" value="John@gmail.com"><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" value="kamilkamil"><br>
+            <input type="password" id="password" name="password" value="kamil123"><br>
             <div class="error">
                 <?php
                 if(isset($error)){
