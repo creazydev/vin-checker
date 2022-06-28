@@ -15,23 +15,23 @@
             ?>
             <p><a href="requests">My requests</a></p>
         </div>
-        <div>
-            <div class="field">
-                <div class="label">
-                <span>
-                    VIN
-                </span>
+        <form action="processing" method="POST">
+            <div>
+                <div class="field">
+                    <div class="label">
+                    <span>
+                        VIN
+                    </span>
+                    </div>
+                    <input type="text" class="input"/>
                 </div>
-                <input type="text" class="input"/>
             </div>
-        </div>
-        <div>
-            <a href="processing">
-                <button class="action-button app-text">
+            <div>
+                <button type="submit" class="action-button app-text">
                     GENERATE REPORT
                 </button>
-            </a>
-        </div>
+            </div>
+        </form>
     </div>
 
 </div>

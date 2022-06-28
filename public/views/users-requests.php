@@ -4,16 +4,16 @@
 
     <div class="wrapper">
         <div>
-            <img src="public/img/processing.png" />
-            <p>Processing...</p>
-            <?php
-            require_once 'src/utils/VinDataRequest.php';
-
-            if(isset($vin)){
-                $vdr = new VinDataRequest();
-                $vdr->send($vin);
-            }
-            ?>
+            <div>
+                <?php  foreach($requests as $row): ?>
+                    <tr>
+                        <td><?=$row['request_id'];?></td>
+                        <td><?=$row['user.email'];?></td>
+                        <td><?=$row['vin'];?></td>
+                        <td><?=$row['timestamp'];?></td>
+                    </tr>
+                <?php endforeach;?>
+            </div>
         </div>
     </div>
 

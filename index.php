@@ -7,7 +7,7 @@ $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('index', 'DefaultController');
 Routing::get('error', 'DefaultController');
-Routing::get('processing', 'DefaultController');
+Routing::post('processing', 'DefaultController');
 Routing::get('report', 'DefaultController');
 Routing::get('requests', 'DefaultController');
 

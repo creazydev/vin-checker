@@ -35,4 +35,15 @@ class SessionMediator {
             return $user->getRole() === 'ADMIN';
         }
     }
+
+    public function isUser(): bool
+    {
+        $user = $this->getCurrentUser();
+
+        if (is_null($user)) {
+            return false;
+        } else {
+            return $user->getRole() === 'ADMIN';
+        }
+    }
 }
