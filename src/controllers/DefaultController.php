@@ -19,4 +19,8 @@ class DefaultController extends AppController {
     public function report() {
         self::render('report');
     }
+
+    public function requests() {
+        self::render('requests');
+    }
 }

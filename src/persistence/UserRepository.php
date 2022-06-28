@@ -5,6 +5,35 @@ require_once __DIR__ . '/../models/User.php';
 
 class UserRepository extends BaseRepository
 {
+    public function findById(int $userId): ?User
+    {
+        $sql = '
+            SELECT * FROM app_users u
+            WHERE user_id = :id
+        ';
+
+        $query = $this
+            ->database
+            ->connect()
+            ->prepare($sql);
+
+        $query->bindParam(':id', $userId, PDO::PARAM_STR);
+        $query->execute();
+
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            return null;
+        }
+
+        return new User(
+            $user['user_id'],
+            $user['email'],
+            $user['password'],
+            $user['role']
+        );
+    }
+
     public function findByEmail(string $email): ?User
     {
         $sql = '
