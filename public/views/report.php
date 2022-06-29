@@ -1,4 +1,3 @@
-<?php include('public/includes/social.php'); ?>
 <div class="content app-text">
     <?php include('public/includes/logo.php'); ?>
 
@@ -262,11 +261,6 @@
         crossorigin="anonymous"></script>
 
 <style>
-    <?php
-        include 'public/css/variables.css';
-        include 'public/css/main.css';
-    ?>
-
     .wrapper {
         display: block;
         color: var(--secondary-color);
