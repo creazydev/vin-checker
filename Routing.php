@@ -1,15 +1,28 @@
 <?php
 
 require_once 'src/controllers/DefaultController.php';
+require_once 'src/controllers/AuthController.php';
+require_once 'src/controllers/AdminController.php';
 
-class Routing {
+class Routing
+{
     public static $routes;
+    public static $session_cookie_name = "session_id";
 
-    public static function get($url, $controller) {
+    private static $authFreeRoutes = array('login', 'register');
+
+    public static function get($url, $controller)
+    {
         self::$routes[$url] = $controller;
     }
 
-    public static function run($url) {
+    public static function post($url, $controller)
+    {
+        self::$routes[$url] = $controller;
+    }
+
+    public static function run($url)
+    {
         $action = explode("/", $url)[0];
 
         if (!array_key_exists($action, self::$routes)) {
@@ -18,15 +31,16 @@ class Routing {
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        $object->$action();
+
+        if (!in_array($action, self::$authFreeRoutes) && !self::isAuthenticated()) {
+            Routing::run('login');
+        } else {
+            $object->$action();
+        }
     }
-}
 
-
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    public static function isAuthenticated(): bool
+    {
+        return isset($_COOKIE[self::$session_cookie_name]);
+    }
 }

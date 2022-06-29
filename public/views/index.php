@@ -1,32 +1,28 @@
-<?php include('public/includes/social.php'); ?>
 <div class="content app-text">
     <?php include('public/includes/logo.php'); ?>
 
     <div class="wrapper">
-        <div>
-            <div class="field">
-                <div class="label">
-                <span>
-                    VIN
-                </span>
+        <form action="processing" method="POST">
+            <div>
+                <div class="field">
+                    <div class="label">
+                    <span>
+                        VIN
+                    </span>
+                    </div>
+
+                    <input type="text" id="vin" name="vin" value="" class="input"
+                           minlength="16"
+                           maxlength="18"
+                    />
                 </div>
-                <input type="text" class="input" />
             </div>
-        </div>
-        <div>
-            <a href="processing">
-                <button class="action-button app-text">
+            <div>
+                <button id="generate" type="submit" class="action-button app-text">
                     GENERATE REPORT
                 </button>
-            </a>
-        </div>
+            </div>
+        </form>
     </div>
 
 </div>
-
-<style>
-    <?php
-        include 'public/css/variables.css';
-        include 'public/css/main.css';
-    ?>
-</style>

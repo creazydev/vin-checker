@@ -70,3 +70,27 @@ button:focus {
 a > * {
   cursor: pointer;
 }
+
+form {
+  color: black;
+}
+
+.error {
+    color: red;
+    font-size: small;
+}
+
+.message {
+    color: green;
+    font-size: small;
+}
+
+th, td {
+    border-bottom: 1px solid #233f65;
+    padding: 0;
+}
+
+th {
+    background-color: #04AA6D;
+    color: white;
+}
