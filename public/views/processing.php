@@ -4,22 +4,40 @@
 
     <div class="wrapper">
         <div>
-            <img src="public/img/processing.png" />
-            <p>Processing...</p>
-            <?php
-            require_once 'src/utils/VinDataRequest.php';
-
-            if(isset($vin)){
-                $vdr = new VinDataRequest();
-                $vdr->send($vin);
-                echo $vin;
-            }
-            ?>
+            <img src="public/img/processing.png"/>
+            <p>
+                Processing...
+                <?php
+                if (isset($vin)) {
+                    echo $vin;
+                }
+                ?>
+            </p>
         </div>
     </div>
 
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script defer>
+    const apiKey = "ZrQEPSkKbWxvZHl2MTExQGdtYWlsLmNvbQ==";
+    const vin = "<?php echo $vin; ?>";
 
+    function requestDetails(vin) {
+        console.log('requesting for vin')
+        $.ajax({
+            url: `https://auto.dev/api/vin/${vin}?apikey=${apiKey}`,
+            type: "get",
+            dataType: 'json',
+            success: function (result) {
+                console.log('success', result);
+            },
+            error: function (result) {
+                console.log('error', result);
+            }
+        });
+    }
+    requestDetails(vin);
+</script>
 <style>
     <?php
         include 'public/css/variables.css';

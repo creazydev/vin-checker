@@ -24,11 +24,14 @@
                     </span>
                     </div>
 
-                    <input type="text" id="vin" name="vin" value="" class="input"/>
+                    <input type="text" id="vin" name="vin" value="" class="input"
+                           minlength="16"
+                           maxlength="18"
+                           pattern="[A-HJ-NPR-Z\\d]{8}[\\dX][A-HJ-NPR-Z\\d]{2}\\d{6}"/>
                 </div>
             </div>
             <div>
-                <button type="submit" class="action-button app-text">
+                <button id="generate" type="submit" class="action-button app-text">
                     GENERATE REPORT
                 </button>
             </div>
