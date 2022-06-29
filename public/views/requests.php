@@ -15,8 +15,6 @@
                     <thead>
                     <tr>
                         <th>Request ID</th>
-                        <th>User</th>
-                        <th>Role</th>
                         <th>VIN</th>
                         <th>Requested at</th>
                     </tr>
@@ -25,8 +23,6 @@
                     <?php foreach ($requests as $row): ?>
                         <tr>
                             <td><?= $row->getRequestId(); ?></td>
-                            <td><?= $row->getUser()->getId(); ?></td>
-                            <td><?= $row->getUser()->getRole(); ?></td>
                             <td><?= $row->getVin(); ?></td>
                             <td><?= gmdate("D M j G:i:s T Y", $row->getTimestamp()); ?></td>
                         </tr>

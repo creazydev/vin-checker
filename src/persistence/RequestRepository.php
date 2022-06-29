@@ -16,34 +16,28 @@ class RequestRepository extends BaseRepository
         $query = $this
             ->database
             ->connect()
-            ->prepare($sql);
+            ->query($sql);
 
-        $query->execute();
-
-        $list = $query->fetch(PDO::FETCH_ASSOC);
-
-        if ($list === false) {
-            return [];
-        }
-
-        return array_map(function ($result) {
-            return new VinRequest(
-                $result['request_id'],
-                new User(
-                    $result['user_id'],
-                    $result['email'],
-                    "",
-                    $result['role']
-                ),
-                $result['requested_at'],
-                $result['vin']
-            );
-        }, $list);
+        return self::mapListResult($query->fetchAll());
     }
 
     public function findAllByUserId(int $userId): array
     {
-        return [];
+        $sql = '
+            SELECT vr.*, u.*
+            FROM vin_requests vr
+            LEFT JOIN app_users u ON vr.user_id = u.user_id
+            WHERE vr.user_id = :userId
+        ';
+
+        $query = $this
+            ->database
+            ->connect()
+            ->prepare($sql);
+
+        $query->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $query->execute();
+        return self::mapListResult($query->fetchAll(PDO::FETCH_ASSOC));
     }
 
     public function save(VinRequest $vinRequest): void
@@ -63,5 +57,28 @@ class RequestRepository extends BaseRepository
             $vinRequest->getVin(),
             $vinRequest->getTimestamp()
         ]);
+    }
+
+    private function mapListResult($result): array
+    {
+        if ($result === false) {
+            $result = [];
+        } else if (!is_array($result)) {
+            $result = [$result];
+        }
+
+        return array_map(function ($result_el) {
+            return new VinRequest(
+                $result_el['request_id'],
+                new User(
+                    $result_el['user_id'],
+                    $result_el['email'],
+                    "",
+                    $result_el['role']
+                ),
+                $result_el['requested_at'],
+                $result_el['vin']
+            );
+        }, $result);
     }
 }

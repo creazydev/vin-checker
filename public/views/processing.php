@@ -12,6 +12,7 @@
             if(isset($vin)){
                 $vdr = new VinDataRequest();
                 $vdr->send($vin);
+                echo $vin;
             }
             ?>
         </div>

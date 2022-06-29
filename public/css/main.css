@@ -84,3 +84,13 @@ form {
     color: green;
     font-size: small;
 }
+
+th, td {
+    border-bottom: 1px solid #233f65;
+    padding: 0;
+}
+
+th {
+    background-color: #04AA6D;
+    color: white;
+}

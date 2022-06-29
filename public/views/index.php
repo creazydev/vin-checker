@@ -23,7 +23,8 @@
                         VIN
                     </span>
                     </div>
-                    <input type="text" class="input"/>
+
+                    <input type="text" id="vin" name="vin" value="" class="input"/>
                 </div>
             </div>
             <div>
