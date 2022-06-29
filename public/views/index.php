@@ -1,4 +1,3 @@
-<?php include('public/includes/social.php'); ?>
 <div class="content app-text">
     <?php include('public/includes/logo.php'); ?>
 
@@ -15,7 +14,7 @@
                     <input type="text" id="vin" name="vin" value="" class="input"
                            minlength="16"
                            maxlength="18"
-                           pattern="[A-HJ-NPR-Z\\d]{8}[\\dX][A-HJ-NPR-Z\\d]{2}\\d{6}"/>
+                    />
                 </div>
             </div>
             <div>
@@ -27,10 +26,3 @@
     </div>
 
 </div>
-
-<style>
-    <?php
-        include 'public/css/variables.css';
-        include 'public/css/main.css';
-    ?>
-</style>

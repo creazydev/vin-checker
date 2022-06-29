@@ -1,4 +1,3 @@
-<?php include('public/includes/social.php'); ?>
 <div class="content app-text">
     <?php include('public/includes/logo.php'); ?>
 
@@ -30,10 +29,3 @@
     </div>
 
 </div>
-
-<style>
-    <?php
-        include 'public/css/variables.css';
-        include 'public/css/main.css';
-    ?>
-</style>
