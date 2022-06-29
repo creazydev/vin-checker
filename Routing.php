@@ -34,13 +34,16 @@ class Routing
 
         if (!in_array($action, self::$authFreeRoutes) && !self::isAuthenticated()) {
             Routing::run('login');
+        } elseif (in_array($action, self::$authFreeRoutes) && self::isAuthenticated()) {
+            Routing::run('index');
         } else {
-            $object->$action();
+                $object->$action();
+            }
+        }
+
+        public
+        static function isAuthenticated(): bool
+        {
+            return isset($_COOKIE[self::$session_cookie_name]);
         }
     }
-
-    public static function isAuthenticated(): bool
-    {
-        return isset($_COOKIE[self::$session_cookie_name]);
-    }
-}
