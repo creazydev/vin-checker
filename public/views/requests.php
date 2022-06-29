@@ -2,15 +2,15 @@
     <?php include('public/includes/logo.php'); ?>
 
     <div class="wrapper">
-        <div>
-            <div>
+        <div class="row">
+            <div class="col w-100 top" style="width: 100%; ">
                 <?php
                 if (!isset($requests)) {
                     $requests = [];
                 }
                 ?>
 
-                <table>
+                <table class="w-100">
                     <thead>
                     <tr>
                         <th>Request ID</th>
@@ -28,7 +28,6 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-            </div>
         </div>
     </div>
 
@@ -36,7 +35,8 @@
 
 <style>
     .wrapper {
-        padding-top: 0;
+        display: block;
+        padding-top: 0px !important;
         padding-bottom: 110px;
     }
 
