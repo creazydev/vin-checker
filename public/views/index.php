@@ -4,22 +4,38 @@
 
     <div class="wrapper">
         <div>
-            <div class="field">
-                <div class="label">
-                <span>
-                    VIN
-                </span>
-                </div>
-                <input type="text" class="input" />
-            </div>
+            <?php
+            require_once 'src/utils/SessionMediator.php';
+
+            $sm = new SessionMediator();
+
+            if ($sm->isAdmin()) {
+                echo '<p><a href="usersRequests">Users requests</a></p>';
+            }
+            ?>
+            <p><a href="requests">My requests</a></p>
         </div>
-        <div>
-            <a href="processing">
-                <button class="action-button app-text">
+        <form action="processing" method="POST">
+            <div>
+                <div class="field">
+                    <div class="label">
+                    <span>
+                        VIN
+                    </span>
+                    </div>
+
+                    <input type="text" id="vin" name="vin" value="" class="input"
+                           minlength="16"
+                           maxlength="18"
+                           pattern="[A-HJ-NPR-Z\\d]{8}[\\dX][A-HJ-NPR-Z\\d]{2}\\d{6}"/>
+                </div>
+            </div>
+            <div>
+                <button id="generate" type="submit" class="action-button app-text">
                     GENERATE REPORT
                 </button>
-            </a>
-        </div>
+            </div>
+        </form>
     </div>
 
 </div>
